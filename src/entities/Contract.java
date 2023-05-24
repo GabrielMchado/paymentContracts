@@ -1,12 +1,16 @@
 package entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Contract {
 
 	private Integer number;
 	private LocalDate date;
 	private Double totalValue;
+	
+	private List<Installment> installment = new ArrayList<Installment>();
 	
 	public Contract(Integer number, LocalDate date, Double totalValue) {
 		super();
@@ -39,4 +43,8 @@ public class Contract {
 		this.totalValue = totalValue;
 	}
 
+	public List<Installment> getInstallment() {
+		return installment;
+	}
+	
 }

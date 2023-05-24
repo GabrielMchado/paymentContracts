@@ -20,6 +20,7 @@ public class ProgramContract {
 		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		Scanner sc = new Scanner(System.in);
 		ContractService service = new ContractService(new PaypalService());
+		Contract contract;
 		
 		System.out.println("Among the details of the contract: ");
 		System.out.print("Number: ");
@@ -34,12 +35,12 @@ public class ProgramContract {
 		System.out.print("Enter the number of installments: ");
 		int install = sc.nextInt();
 		
-		service.processContract(new Contract(number, date, value), install);
+		service.processContract(contract = new Contract(number, date, value), install);
 		
 		System.out.println("installments: ");
 
-		for(Installment i: service.getList()) {
-			System.out.println(sdf.format(i.getDueDate()) + " - " + String.format("%.2f", i.getAmount()));
+		for(Installment i: contract.getInstallment()) {
+			System.out.println(i);
 		}
 		
 	}
